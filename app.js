@@ -25,9 +25,11 @@ app.use(bodyParser.json())
 
 app.use(morgan('tiny'));
 
+app.use(express.static('./'));
+
 app.use('/', routes);
 
-models.db.sync({force: true})
+models.db.sync({force:true})
 .then(function () {
     // make sure to replace the name below with your express app
     app.listen(3000, function () {

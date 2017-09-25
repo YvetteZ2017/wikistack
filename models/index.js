@@ -27,7 +27,7 @@ module.exports = {
 
 
   Page.hook('beforeValidate', (page, options) => {
-    console.log(page.title);
+    
     if (page.title) {
         // Removes all non-alphanumeric characters from title
         // And make whitespace underscore
@@ -36,5 +36,10 @@ module.exports = {
         // Generates random 5 letter string
         page.urlTitle = Math.random().toString(36).substring(2, 7);
       }
-      console.log(page.urlTitle);
   });
+
+  Page.belongsTo(User, {
+      as: 'author'
+  });
+
+//   User.findOrCreate
